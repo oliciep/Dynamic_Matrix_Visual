@@ -1,0 +1,45 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Columns",
+            "name": "columns",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Rows",
+            "name": "rows",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Values",
+            "name": "values",
+            "kind": "Measure"
+        }
+    ],
+    "dataViewMappings": [
+        {
+            "table": {
+                "rows": {
+                    "select": [
+                        {
+                            "for": {
+                                "in": "rows"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "values"
+                            }
+                        }
+                    ]
+                },
+                "rowCount": {
+                    "preferred": {
+                        "min": 1
+                    }
+                }
+            }
+        }
+    ],
+    "privileges": []
+}
