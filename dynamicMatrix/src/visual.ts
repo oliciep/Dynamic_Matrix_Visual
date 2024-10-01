@@ -64,13 +64,13 @@ export class Visual implements IVisual {
         }
     
         // Separate columns and rows based on the data roles
-        let columnIndices = tableData.columns
-            .map((col, i) => ({ index: i, role: col.roles }))
-            .filter(col => col.role && col.role['columns']);
-    
         let rowIndices = tableData.columns
             .map((col, i) => ({ index: i, role: col.roles }))
             .filter(col => col.role && col.role['rows']);
+    
+        let columnIndices = tableData.columns
+            .map((col, i) => ({ index: i, role: col.roles }))
+            .filter(col => col.role && col.role['columns']);
     
         let valueIndices = tableData.columns
             .map((col, i) => ({ index: i, role: col.roles }))
@@ -78,10 +78,18 @@ export class Visual implements IVisual {
     
         // Update header
         this.tableHeader.selectAll('th').remove();
-        this.tableHeader.selectAll('th')
+        
+        // Add header for row identifier
+        this.tableHeader.append('th')
+            .text(tableData.columns[rowIndices[0].index].displayName)
+            .classed('rowHeader', true);
+
+        // Add headers for columns and values
+        this.tableHeader.selectAll('th.dataHeader')
             .data(columnIndices.concat(valueIndices))
             .enter()
             .append('th')
+            .classed('dataHeader', true)
             .text(d => tableData.columns[d.index].displayName);
     
         // Update rows
@@ -96,9 +104,15 @@ export class Visual implements IVisual {
         let allRows = newRows.merge(rows as any);
     
         allRows.selectAll('td')
-            .data(d => rowIndices.concat(valueIndices).map(i => d[i.index]))
+            .data(d => {
+                return [
+                    { value: d[rowIndices[0].index], isRowHeader: true },
+                    ...columnIndices.concat(valueIndices).map(i => ({ value: d[i.index], isRowHeader: false }))
+                ];
+            })
             .join('td')
-            .text(d => d !== null && d !== undefined ? d.toString() : "");
+            .attr('class', d => d.isRowHeader ? 'rowHeader' : 'dataCell')
+            .text(d => d.value !== null && d.value !== undefined ? d.value.toString() : "");
     
         // Apply styling
         this.table
@@ -109,9 +123,13 @@ export class Visual implements IVisual {
             .style("border", "1px solid black")
             .style("padding", "5px")
             .style("text-align", "left");
-    
+        
+        this.table.selectAll("th.rowHeader, td.rowHeader")
+            .style("font-weight", "bold")
+            .style("background-color", "#f2f2f2");
+
         // Log information for debugging
-        console.log("Number of columns:", columnIndices.length + valueIndices.length);
+        console.log("Number of columns:", columnIndices.length + valueIndices.length + 1); // +1 for row header
         console.log("Number of rows:", tableData.rows.length);
     }
 }
