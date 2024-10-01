@@ -1,19 +1,19 @@
 {
     "dataRoles": [
         {
-            "displayName": "Columns",
-            "name": "columns",
-            "kind": "Grouping"
-        },
-        {
-            "displayName": "Rows",
             "name": "rows",
-            "kind": "Grouping"
+            "kind": "Grouping",
+            "displayName": "Rows"
         },
         {
-            "displayName": "Values",
+            "name": "columns",
+            "kind": "Grouping",
+            "displayName": "Columns"
+        },
+        {
             "name": "values",
-            "kind": "Measure"
+            "kind": "Measure",
+            "displayName": "Values"
         }
     ],
     "dataViewMappings": [
@@ -28,18 +28,29 @@
                         },
                         {
                             "for": {
+                                "in": "columns"
+                            }
+                        },
+                        {
+                            "for": {
                                 "in": "values"
                             }
                         }
                     ]
-                },
-                "rowCount": {
-                    "preferred": {
-                        "min": 1
-                    }
                 }
             }
         }
     ],
-    "privileges": []
+    "objects": {
+        "general": {
+            "displayName": "General",
+            "properties": {
+                "filter": {
+                    "type": {
+                        "filter": true
+                    }
+                }
+            }
+        }
+    }
 }

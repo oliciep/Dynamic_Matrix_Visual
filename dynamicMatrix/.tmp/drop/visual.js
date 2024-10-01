@@ -51,6 +51,7 @@ class Visual {
             .append('tr');
         this.tableBody = this.table.append('tbody');
     }
+    // Updating table
     update(options) {
         if (!options.dataViews || !options.dataViews[0])
             return;

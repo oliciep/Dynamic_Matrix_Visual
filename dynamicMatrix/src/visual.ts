@@ -52,6 +52,8 @@ export class Visual implements IVisual {
         this.tableBody = this.table.append('tbody');
     }
 
+    // Updating table
+    
     public update(options: VisualUpdateOptions) {
         if (!options.dataViews || !options.dataViews[0]) return;
     
