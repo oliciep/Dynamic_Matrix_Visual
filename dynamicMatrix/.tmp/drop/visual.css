@@ -1,10 +1,21 @@
-p {
-  font-size: 20px;
+.simpleTable {
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  width: 100%;
+  border-collapse: collapse;
+}
+.simpleTable th,
+.simpleTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.simpleTable th {
+  background-color: #f2f2f2;
   font-weight: bold;
 }
-p em {
-  background: yellow;
-  padding: 5px;
+.simpleTable tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
 
