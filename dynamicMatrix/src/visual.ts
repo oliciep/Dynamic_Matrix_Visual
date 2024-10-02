@@ -115,20 +115,6 @@ export class Visual implements IVisual {
             .join('td')
             .attr('class', d => d.isRowHeader ? 'rowHeader' : 'dataCell')
             .text(d => d.value !== null && d.value !== undefined ? d.value.toString() : "");
-    
-        // Apply styling
-        this.table
-            .style("border-collapse", "collapse")
-            .style("width", "100%");
-        
-        this.table.selectAll("th, td")
-            .style("border", "1px solid black")
-            .style("padding", "5px")
-            .style("text-align", "left");
-        
-        this.table.selectAll("th.rowHeader, td.rowHeader")
-            .style("font-weight", "bold")
-            .style("background-color", "#f2f2f2");
 
         // Log information for debugging
         console.log("Number of columns:", columnIndices.length + valueIndices.length + 1); // +1 added for row header
