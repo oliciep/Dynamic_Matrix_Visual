@@ -113,7 +113,7 @@ class Visual {
             .style("font-weight", "bold")
             .style("background-color", "#f2f2f2");
         // Log information for debugging
-        console.log("Number of columns:", columnIndices.length + valueIndices.length + 1); // +1 for row header
+        console.log("Number of columns:", columnIndices.length + valueIndices.length + 1); // +1 added for row header
         console.log("Number of rows:", tableData.rows.length);
     }
 }
