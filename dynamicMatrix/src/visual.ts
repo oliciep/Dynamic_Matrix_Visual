@@ -52,8 +52,6 @@ export class Visual implements IVisual {
         this.tableBody = this.table.append('tbody');
     }
 
-    // Updating table
-
     public update(options: VisualUpdateOptions) {
         if (!options.dataViews || !options.dataViews[0]) return;
     
@@ -117,7 +115,7 @@ export class Visual implements IVisual {
             .text(d => d.value !== null && d.value !== undefined ? d.value.toString() : "");
 
         // Log information for debugging
-        console.log("Number of columns:", columnIndices.length + valueIndices.length + 1); // +1 added for row header
+        console.log("Number of columns:", columnIndices.length + valueIndices.length + 1);
         console.log("Number of rows:", tableData.rows.length);
     }
 }
