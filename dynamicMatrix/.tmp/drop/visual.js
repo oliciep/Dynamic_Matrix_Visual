@@ -51,7 +51,6 @@ class Visual {
             .append('tr');
         this.tableBody = this.table.append('tbody');
     }
-    // Updating table
     update(options) {
         if (!options.dataViews || !options.dataViews[0])
             return;
@@ -102,7 +101,7 @@ class Visual {
             .attr('class', d => d.isRowHeader ? 'rowHeader' : 'dataCell')
             .text(d => d.value !== null && d.value !== undefined ? d.value.toString() : "");
         // Log information for debugging
-        console.log("Number of columns:", columnIndices.length + valueIndices.length + 1); // +1 added for row header
+        console.log("Number of columns:", columnIndices.length + valueIndices.length + 1);
         console.log("Number of rows:", tableData.rows.length);
     }
 }

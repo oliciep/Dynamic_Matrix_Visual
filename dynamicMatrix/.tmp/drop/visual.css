@@ -1,8 +1,6 @@
 .simpleTable {
-  font-family: "Segoe UI", sans-serif;
-  font-size: 12px;
-  width: 100%;
   border-collapse: collapse;
+  width: 100%;
 }
 .simpleTable th,
 .simpleTable td {
@@ -16,6 +14,12 @@
 }
 .simpleTable tr:nth-child(even) {
   background-color: #f9f9f9;
+}
+.simpleTable .rowHeader {
+  font-weight: bold;
+}
+.simpleTable .dataCell {
+  text-align: right;
 }
 
 
