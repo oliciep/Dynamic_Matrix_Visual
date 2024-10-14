@@ -83,7 +83,7 @@ class Visual {
             .append('th')
             .classed('dataHeader', true)
             .text(d => tableData.columns[d.index].displayName);
-        // Update rows
+        // Update rows in table
         let rows = this.tableBody.selectAll('tr')
             .data(tableData.rows);
         rows.exit().remove();
