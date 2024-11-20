@@ -51,10 +51,18 @@ export class Visual implements IVisual {
 
     constructor(options: VisualConstructorOptions) {
         this.host = options.host;
-        this.table = d3.select(options.element)
-            .append('table')
+    
+        // Create a scrollable container
+        let scrollContainer = d3.select(options.element)
+            .append('div')
+            .style('width', '100%')
+            .style('height', '300px') // Set desired height
+            .style('overflow', 'auto');
+    
+        // Append the table to the scrollable container
+        this.table = scrollContainer.append('table')
             .classed('matrixTable', true);
-        
+    
         this.tableHeader = this.table.append('thead');
         this.tableBody = this.table.append('tbody');
     }
@@ -158,6 +166,7 @@ export class Visual implements IVisual {
 
         return leafNodes;
     }
+    
 
     // Build column headers with proper colspan
     private buildColumnHeaders(columnLeaves: LeafNode[]): { level: number, items: { text: string, colspan: number }[] }[] {
