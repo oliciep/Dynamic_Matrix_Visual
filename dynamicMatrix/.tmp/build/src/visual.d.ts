@@ -10,4 +10,7 @@ export declare class Visual implements IVisual {
     private tableBody;
     constructor(options: VisualConstructorOptions);
     update(options: VisualUpdateOptions): void;
+    private getCellValue;
+    private getLeafNodes;
+    private buildColumnHeaders;
 }

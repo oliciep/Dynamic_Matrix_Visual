@@ -1,39 +1,42 @@
 {
     "dataRoles": [
         {
-            "name": "rows",
-            "kind": "Grouping",
-            "displayName": "Rows"
+            "name": "Category",
+            "displayName": "Category",
+            "displayNameKey": "Visual_Category",
+            "kind": "Grouping"
         },
         {
-            "name": "columns",
-            "kind": "Grouping",
-            "displayName": "Columns"
+            "name": "Column",
+            "displayName": "Column",
+            "displayNameKey": "Visual_Column",
+            "kind": "Grouping"
         },
         {
-            "name": "values",
-            "kind": "Measure",
-            "displayName": "Values"
+            "name": "Measure",
+            "displayName": "Measure",
+            "displayNameKey": "Visual_Values",
+            "kind": "Measure"
         }
     ],
     "dataViewMappings": [
         {
-            "table": {
+            "matrix": {
                 "rows": {
+                    "for": {
+                        "in": "Category"
+                    }
+                },
+                "columns": {
+                    "for": {
+                        "in": "Column"
+                    }
+                },
+                "values": {
                     "select": [
                         {
                             "for": {
-                                "in": "rows"
-                            }
-                        },
-                        {
-                            "for": {
-                                "in": "columns"
-                            }
-                        },
-                        {
-                            "for": {
-                                "in": "values"
+                                "in": "Measure"
                             }
                         }
                     ]
@@ -41,17 +44,5 @@
             }
         }
     ],
-    "objects": {
-        "general": {
-            "displayName": "General",
-            "properties": {
-                "filter": {
-                    "type": {
-                        "filter": true
-                    }
-                }
-            }
-        }
-    },
     "privileges": []
 }

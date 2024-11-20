@@ -32,23 +32,30 @@ import VisualUpdateOptions = powerbi.extensibility.visual.VisualUpdateOptions;
 import IVisual = powerbi.extensibility.visual.IVisual;
 import DataView = powerbi.DataView;
 import IVisualHost = powerbi.extensibility.IVisualHost;
+import DataViewMatrix = powerbi.DataViewMatrix;
+import DataViewMatrixNode = powerbi.DataViewMatrixNode;
 import * as d3 from "d3";
 type Selection<T extends d3.BaseType> = d3.Selection<T, any, any, any>;
 
+interface LeafNode {
+    node: DataViewMatrixNode;
+    levelValues: any[]; 
+    index: number; 
+}
+
 export class Visual implements IVisual {
     private host: IVisualHost;
-    private table: Selection<HTMLElement>;
-    private tableHeader: Selection<HTMLElement>;
-    private tableBody: Selection<HTMLElement>;
+    private table: Selection<HTMLTableElement>;
+    private tableHeader: Selection<HTMLTableSectionElement>;
+    private tableBody: Selection<HTMLTableSectionElement>;
 
     constructor(options: VisualConstructorOptions) {
+        this.host = options.host;
         this.table = d3.select(options.element)
             .append('table')
-            .classed('simpleTable', true);
+            .classed('matrixTable', true);
         
-        this.tableHeader = this.table.append('thead')
-            .append('tr');
-        
+        this.tableHeader = this.table.append('thead');
         this.tableBody = this.table.append('tbody');
     }
 
@@ -56,66 +63,132 @@ export class Visual implements IVisual {
         if (!options.dataViews || !options.dataViews[0]) return;
     
         let dataView: DataView = options.dataViews[0];
-        let tableData = dataView.table;
+        let matrix: DataViewMatrix = dataView.matrix;
     
-        if (!tableData || !tableData.columns || !tableData.rows) {
-            console.log("No data available for the table");
+        if (!matrix || !matrix.rows || !matrix.columns) {
+            console.log("No matrix data available");
             return;
         }
     
-        // Separate columns and rows based on the data roles
-        let rowIndices = tableData.columns
-            .map((col, i) => ({ index: i, role: col.roles }))
-            .filter(col => col.role && col.role['rows']);
+        // Get leaf nodes with hierarchical values
+        let rowLeaves = this.getLeafNodes(matrix.rows.root);
+        let columnLeaves = this.getLeafNodes(matrix.columns.root);
     
-        let columnIndices = tableData.columns
-            .map((col, i) => ({ index: i, role: col.roles }))
-            .filter(col => col.role && col.role['columns']);
+        // Clear previous table content
+        this.tableHeader.selectAll('*').remove();
+        this.tableBody.selectAll('*').remove();
     
-        let valueIndices = tableData.columns
-            .map((col, i) => ({ index: i, role: col.roles }))
-            .filter(col => col.role && col.role['values']);
-    
-        // Update header
-        this.tableHeader.selectAll('th').remove();
-        
-        // Add header for row identifier
-        this.tableHeader.append('th')
-            .text(tableData.columns[rowIndices[0].index].displayName)
-            .classed('rowHeader', true);
+        // Build column headers
+        let columnHeaders = this.buildColumnHeaders(columnLeaves);
 
-        // Add headers for columns and values
-        this.tableHeader.selectAll('th.dataHeader')
-            .data(columnIndices.concat(valueIndices))
-            .enter()
-            .append('th')
-            .classed('dataHeader', true)
-            .text(d => tableData.columns[d.index].displayName);
-    
-        // Update rows in table
-        let rows = this.tableBody.selectAll('tr')
-            .data(tableData.rows);
-    
-        rows.exit().remove();
-    
-        let newRows = rows.enter()
-            .append('tr');
-    
-        let allRows = newRows.merge(rows as any);
-    
-        allRows.selectAll('td')
-            .data(d => {
-                return [
-                    { value: d[rowIndices[0].index], isRowHeader: true },
-                    ...columnIndices.concat(valueIndices).map(i => ({ value: d[i.index], isRowHeader: false }))
-                ];
-            })
-            .join('td')
-            .attr('class', d => d.isRowHeader ? 'rowHeader' : 'dataCell')
-            .text(d => d.value !== null && d.value !== undefined ? d.value.toString() : "");
+        // Build header rows
+        columnHeaders.forEach(headerRowData => {
+            let headerRow = this.tableHeader.append('tr');
+            // Empty cells for row headers
+            if (headerRowData.level === 0) {
+                for (let i = 0; i < matrix.rows.levels.length; i++) {
+                    headerRow.append('th')
+                        .attr('rowspan', columnHeaders.length)
+                        .classed('rowHeader', true);
+                }
+            }
+            // Add column headers
+            headerRow.selectAll('th.columnHeader')
+                .data(headerRowData.items)
+                .enter()
+                .append('th')
+                .attr('colspan', d => d.colspan)
+                .text(d => d.text);
+        });
 
-        // Log information for debugging
-        console.log("Number of columns:", columnIndices.length + valueIndices.length + 1);
-        console.log("Number of rows:", tableData.rows.length);
+        // Build data rows
+        rowLeaves.forEach(rowLeaf => {
+            let row = this.tableBody.append('tr');
+
+            // Add row headers
+            rowLeaf.levelValues.forEach(value => {
+                row.append('td')
+                    .classed('rowHeader', true)
+                    .text(value != null ? value.toString() : "");
+            });
+
+            // Add data cells
+            columnLeaves.forEach(columnLeaf => {
+                let cellValue = this.getCellValue(rowLeaf, columnLeaf);
+                row.append('td')
+                    .classed('dataCell', true)
+                    .text(cellValue != null ? cellValue.toString() : "");
+            });
+        });
+    }
+
+    // Helper method to get cell value
+    private getCellValue(rowLeaf: LeafNode, columnLeaf: LeafNode): any {
+        let rowNode = rowLeaf.node;
+        let columnIndex = columnLeaf.index;
+
+        if (rowNode.values && rowNode.values.hasOwnProperty(columnIndex)) {
+            let valueObj = rowNode.values[columnIndex];
+            if (valueObj) {
+                return valueObj.value;
+            }
+        }
+        return null;
+    }
+
+    // Recursive method to collect leaf nodes and their hierarchical values
+    private getLeafNodes(node: DataViewMatrixNode, levelValues: any[] = [], leafNodes: LeafNode[] = [], level: number = 0): LeafNode[] {
+        let currentLevelValues = [...levelValues];
+
+        if (node.value !== undefined) {
+            currentLevelValues.push(node.value);
+        }
+
+        if (node.children && node.children.length > 0) {
+            node.children.forEach(child => {
+                this.getLeafNodes(child, currentLevelValues, leafNodes, level + 1);
+            });
+        } else {
+            leafNodes.push({
+                node: node,
+                levelValues: currentLevelValues,
+                index: leafNodes.length // Assign index based on position
+            });
+        }
+
+        return leafNodes;
+    }
+
+    // Build column headers with proper colspan
+    private buildColumnHeaders(columnLeaves: LeafNode[]): { level: number, items: { text: string, colspan: number }[] }[] {
+        // Build headers for each level
+        let headersByLevel: { [level: number]: { [text: string]: { text: string, colspan: number } } } = {};
+
+        columnLeaves.forEach(leaf => {
+            leaf.levelValues.forEach((value, level) => {
+                if (!headersByLevel[level]) {
+                    headersByLevel[level] = {};
+                }
+                let key = value !== null && value !== undefined ? value.toString() : "";
+                if (!headersByLevel[level][key]) {
+                    headersByLevel[level][key] = { text: key, colspan: 0 };
+                }
+                headersByLevel[level][key].colspan += 1;
+            });
+        });
+
+        // Convert headersByLevel to an array of header rows
+        let headerRows: { level: number, items: { text: string, colspan: number }[] }[] = [];
+
+        Object.keys(headersByLevel).forEach(levelKey => {
+            let level = parseInt(levelKey);
+            let items = Object.values(headersByLevel[level]);
+            headerRows.push({ level: level, items: items });
+        });
+
+        // Sort header rows by level
+        headerRows.sort((a, b) => a.level - b.level);
+
+        return headerRows;
     }
 }

@@ -44,65 +44,125 @@ class Visual {
     tableHeader;
     tableBody;
     constructor(options) {
+        this.host = options.host;
         this.table = d3__WEBPACK_IMPORTED_MODULE_0__/* .select */ .Ltv(options.element)
             .append('table')
-            .classed('simpleTable', true);
-        this.tableHeader = this.table.append('thead')
-            .append('tr');
+            .classed('matrixTable', true);
+        this.tableHeader = this.table.append('thead');
         this.tableBody = this.table.append('tbody');
     }
     update(options) {
         if (!options.dataViews || !options.dataViews[0])
             return;
         let dataView = options.dataViews[0];
-        let tableData = dataView.table;
-        if (!tableData || !tableData.columns || !tableData.rows) {
-            console.log("No data available for the table");
+        let matrix = dataView.matrix;
+        if (!matrix || !matrix.rows || !matrix.columns) {
+            console.log("No matrix data available");
             return;
         }
-        // Separate columns and rows based on the data roles
-        let rowIndices = tableData.columns
-            .map((col, i) => ({ index: i, role: col.roles }))
-            .filter(col => col.role && col.role['rows']);
-        let columnIndices = tableData.columns
-            .map((col, i) => ({ index: i, role: col.roles }))
-            .filter(col => col.role && col.role['columns']);
-        let valueIndices = tableData.columns
-            .map((col, i) => ({ index: i, role: col.roles }))
-            .filter(col => col.role && col.role['values']);
-        // Update header
-        this.tableHeader.selectAll('th').remove();
-        // Add header for row identifier
-        this.tableHeader.append('th')
-            .text(tableData.columns[rowIndices[0].index].displayName)
-            .classed('rowHeader', true);
-        // Add headers for columns and values
-        this.tableHeader.selectAll('th.dataHeader')
-            .data(columnIndices.concat(valueIndices))
-            .enter()
-            .append('th')
-            .classed('dataHeader', true)
-            .text(d => tableData.columns[d.index].displayName);
-        // Update rows in table
-        let rows = this.tableBody.selectAll('tr')
-            .data(tableData.rows);
-        rows.exit().remove();
-        let newRows = rows.enter()
-            .append('tr');
-        let allRows = newRows.merge(rows);
-        allRows.selectAll('td')
-            .data(d => {
-            return [
-                { value: d[rowIndices[0].index], isRowHeader: true },
-                ...columnIndices.concat(valueIndices).map(i => ({ value: d[i.index], isRowHeader: false }))
-            ];
-        })
-            .join('td')
-            .attr('class', d => d.isRowHeader ? 'rowHeader' : 'dataCell')
-            .text(d => d.value !== null && d.value !== undefined ? d.value.toString() : "");
-        // Log information for debugging
-        console.log("Number of columns:", columnIndices.length + valueIndices.length + 1);
-        console.log("Number of rows:", tableData.rows.length);
+        // Get leaf nodes with hierarchical values
+        let rowLeaves = this.getLeafNodes(matrix.rows.root);
+        let columnLeaves = this.getLeafNodes(matrix.columns.root);
+        // Clear previous table content
+        this.tableHeader.selectAll('*').remove();
+        this.tableBody.selectAll('*').remove();
+        // Build column headers
+        let columnHeaders = this.buildColumnHeaders(columnLeaves);
+        // Build header rows
+        columnHeaders.forEach(headerRowData => {
+            let headerRow = this.tableHeader.append('tr');
+            // Empty cells for row headers
+            if (headerRowData.level === 0) {
+                for (let i = 0; i < matrix.rows.levels.length; i++) {
+                    headerRow.append('th')
+                        .attr('rowspan', columnHeaders.length)
+                        .classed('rowHeader', true);
+                }
+            }
+            // Add column headers
+            headerRow.selectAll('th.columnHeader')
+                .data(headerRowData.items)
+                .enter()
+                .append('th')
+                .attr('colspan', d => d.colspan)
+                .text(d => d.text);
+        });
+        // Build data rows
+        rowLeaves.forEach(rowLeaf => {
+            let row = this.tableBody.append('tr');
+            // Add row headers
+            rowLeaf.levelValues.forEach(value => {
+                row.append('td')
+                    .classed('rowHeader', true)
+                    .text(value != null ? value.toString() : "");
+            });
+            // Add data cells
+            columnLeaves.forEach(columnLeaf => {
+                let cellValue = this.getCellValue(rowLeaf, columnLeaf);
+                row.append('td')
+                    .classed('dataCell', true)
+                    .text(cellValue != null ? cellValue.toString() : "");
+            });
+        });
+    }
+    // Helper method to get cell value
+    getCellValue(rowLeaf, columnLeaf) {
+        let rowNode = rowLeaf.node;
+        let columnIndex = columnLeaf.index;
+        if (rowNode.values && rowNode.values.hasOwnProperty(columnIndex)) {
+            let valueObj = rowNode.values[columnIndex];
+            if (valueObj) {
+                return valueObj.value;
+            }
+        }
+        return null;
+    }
+    // Recursive method to collect leaf nodes and their hierarchical values
+    getLeafNodes(node, levelValues = [], leafNodes = [], level = 0) {
+        let currentLevelValues = [...levelValues];
+        if (node.value !== undefined) {
+            currentLevelValues.push(node.value);
+        }
+        if (node.children && node.children.length > 0) {
+            node.children.forEach(child => {
+                this.getLeafNodes(child, currentLevelValues, leafNodes, level + 1);
+            });
+        }
+        else {
+            leafNodes.push({
+                node: node,
+                levelValues: currentLevelValues,
+                index: leafNodes.length // Assign index based on position
+            });
+        }
+        return leafNodes;
+    }
+    // Build column headers with proper colspan
+    buildColumnHeaders(columnLeaves) {
+        // Build headers for each level
+        let headersByLevel = {};
+        columnLeaves.forEach(leaf => {
+            leaf.levelValues.forEach((value, level) => {
+                if (!headersByLevel[level]) {
+                    headersByLevel[level] = {};
+                }
+                let key = value !== null && value !== undefined ? value.toString() : "";
+                if (!headersByLevel[level][key]) {
+                    headersByLevel[level][key] = { text: key, colspan: 0 };
+                }
+                headersByLevel[level][key].colspan += 1;
+            });
+        });
+        // Convert headersByLevel to an array of header rows
+        let headerRows = [];
+        Object.keys(headersByLevel).forEach(levelKey => {
+            let level = parseInt(levelKey);
+            let items = Object.values(headersByLevel[level]);
+            headerRows.push({ level: level, items: items });
+        });
+        // Sort header rows by level
+        headerRows.sort((a, b) => a.level - b.level);
+        return headerRows;
     }
 }
 

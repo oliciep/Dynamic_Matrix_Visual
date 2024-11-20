@@ -1,24 +1,20 @@
-.simpleTable {
+.matrixTable {
   border-collapse: collapse;
   width: 100%;
 }
-.simpleTable th,
-.simpleTable td {
-  border: 1px solid #ddd;
-  padding: 8px;
+.matrixTable th,
+.matrixTable td {
+  border: 1px solid #d0d0d0;
+  padding: 5px;
   text-align: left;
 }
-.simpleTable th {
+.matrixTable th {
   background-color: #f2f2f2;
+}
+.matrixTable .rowHeader {
   font-weight: bold;
 }
-.simpleTable tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-.simpleTable .rowHeader {
-  font-weight: bold;
-}
-.simpleTable .dataCell {
+.matrixTable .dataCell {
   text-align: right;
 }
 
