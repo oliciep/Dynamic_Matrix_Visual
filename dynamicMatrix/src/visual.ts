@@ -44,6 +44,22 @@ interface LeafNode {
     index: number; 
 }
 
+interface VisualSettings {
+    general: {
+        show: boolean;
+    };
+    header: {
+        fontColor: string;
+        backgroundColor: string;
+        fontSize: number;
+    };
+    data: {
+        fontColor: string;
+        backgroundColor: string;
+        fontSize: number;
+    };
+}
+
 export class Visual implements IVisual {
     private host: IVisualHost;
     private table: Selection<HTMLTableElement>;
