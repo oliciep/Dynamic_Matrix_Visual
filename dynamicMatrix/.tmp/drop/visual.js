@@ -49,7 +49,7 @@ class Visual {
         let scrollContainer = d3__WEBPACK_IMPORTED_MODULE_0__/* .select */ .Ltv(options.element)
             .append('div')
             .style('width', '100%')
-            .style('height', '300px') // Set desired height
+            .style('max-height', '100%') // Set desired height
             .style('overflow', 'auto');
         // Append the table to the scrollable container
         this.table = scrollContainer.append('table')

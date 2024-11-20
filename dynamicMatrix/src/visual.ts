@@ -56,7 +56,7 @@ export class Visual implements IVisual {
         let scrollContainer = d3.select(options.element)
             .append('div')
             .style('width', '100%')
-            .style('height', '300px') // Set desired height
+            .style('max-height', '100%') // Set desired height
             .style('overflow', 'auto');
     
         // Append the table to the scrollable container
