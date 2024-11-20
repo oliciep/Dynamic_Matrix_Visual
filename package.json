@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "powerbi-visuals-utils-formattingutils": "^6.1.2"
+  }
+}
