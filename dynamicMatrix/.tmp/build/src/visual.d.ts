@@ -8,6 +8,7 @@ export declare class Visual implements IVisual {
     private table;
     private tableHeader;
     private tableBody;
+    private valueFormats;
     constructor(options: VisualConstructorOptions);
     update(options: VisualUpdateOptions): void;
     private getCellValue;

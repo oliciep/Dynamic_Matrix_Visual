@@ -65,6 +65,7 @@ export class Visual implements IVisual {
     private table: Selection<HTMLTableElement>;
     private tableHeader: Selection<HTMLTableSectionElement>;
     private tableBody: Selection<HTMLTableSectionElement>;
+    private valueFormats: string[] = [];
 
     constructor(options: VisualConstructorOptions) {
         this.host = options.host;
@@ -86,13 +87,21 @@ export class Visual implements IVisual {
 
     public update(options: VisualUpdateOptions) {
         if (!options.dataViews || !options.dataViews[0]) return;
-    
+
         let dataView: DataView = options.dataViews[0];
         let matrix: DataViewMatrix = dataView.matrix;
-    
+
         if (!matrix || !matrix.rows || !matrix.columns) {
             console.log("No matrix data available");
             return;
+        }
+
+        // Collect format strings for value sources
+        this.valueFormats = [];
+        if (dataView.matrix.valueSources) {
+            dataView.matrix.valueSources.forEach(valueSource => {
+                this.valueFormats.push(valueSource.format || "");
+            });
         }
     
         // Get leaf nodes with hierarchical values
@@ -148,14 +157,27 @@ export class Visual implements IVisual {
     }
 
     // Helper method to get cell value
-    private getCellValue(rowLeaf: LeafNode, columnLeaf: LeafNode): any {
+    private getCellValue(rowLeaf: LeafNode, columnLeaf: LeafNode): string | null {
         let rowNode = rowLeaf.node;
         let columnIndex = columnLeaf.index;
-
+    
         if (rowNode.values && rowNode.values.hasOwnProperty(columnIndex)) {
             let valueObj = rowNode.values[columnIndex];
-            if (valueObj) {
-                return valueObj.value;
+            if (valueObj && valueObj.value !== undefined) {
+                // Get the measure index
+                let measureIndex = valueObj.valueSourceIndex ?? 0; // Default to 0 if undefined
+    
+                // Get the format string for the measure
+                let formatString = this.valueFormats[measureIndex] || "";
+    
+                // Create a value formatter
+                let formatter = valueFormatter.create({
+                    format: formatString,
+                    value: valueObj.value
+                });
+    
+                // Format and return the value
+                return formatter.format(valueObj.value);
             }
         }
         return null;
