@@ -44,6 +44,51 @@
             }
         }
     ],
+    "objects": {
+        "general": {
+            "displayName": "General",
+            "properties": {
+                "show": {
+                    "displayName": "Show",
+                    "type": { "bool": true }
+                }
+            }
+        },
+        "header": {
+            "displayName": "Header",
+            "properties": {
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "backgroundColor": {
+                    "displayName": "Background Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "numeric": true }
+                }
+            }
+        },
+        "data": {
+            "displayName": "Data",
+            "properties": {
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "backgroundColor": {
+                    "displayName": "Background Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "numeric": true }
+                }
+            }
+        }
+    },
     "privileges": []
 }
 
