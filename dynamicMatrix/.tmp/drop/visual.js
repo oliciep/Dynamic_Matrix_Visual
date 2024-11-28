@@ -94,7 +94,7 @@ class Visual {
         this.tableBody.selectAll('*').remove();
         // Build column headers
         let columnHeaders = this.buildColumnHeaders(columnLeaves);
-        // Build header rows
+        // Append column headers to the table
         columnHeaders.forEach(headerRowData => {
             let headerRow = this.tableHeader.append('tr');
             // Empty cells for row headers
@@ -113,8 +113,10 @@ class Visual {
                 .attr('colspan', d => d.colspan)
                 .text(d => d.text);
         });
+        // Calculate totals
+        let { columnTotals, grandTotal } = this.calculateTotals(rowLeaves, columnLeaves);
         // Build data rows
-        rowLeaves.forEach(rowLeaf => {
+        rowLeaves.forEach((rowLeaf, rowIndex) => {
             let row = this.tableBody.append('tr');
             // Add row headers
             rowLeaf.levelValues.forEach(value => {
@@ -123,13 +125,28 @@ class Visual {
                     .text(value != null ? value.toString() : "");
             });
             // Add data cells
-            columnLeaves.forEach(columnLeaf => {
+            columnLeaves.forEach((columnLeaf, columnIndex) => {
                 let cellValue = this.getCellValue(rowLeaf, columnLeaf);
                 row.append('td')
                     .classed('dataCell', true)
                     .text(cellValue != null ? cellValue.toString() : "");
             });
         });
+        // Add column totals row
+        let totalsRow = this.tableBody.append('tr');
+        totalsRow.append('td')
+            .attr('colspan', matrix.rows.levels.length)
+            .classed('totalsLabel', true)
+            .text('Totals');
+        columnTotals.forEach(total => {
+            totalsRow.append('td')
+                .classed('columnTotal', true)
+                .text(total.toString());
+        });
+        // Add grand total (DEPRECATED - WIP)
+        // totalsRow.append('td')
+        //    .classed('grandTotal', true)
+        //    .text(grandTotal.toString());
     }
     // Helper method to get cell value
     getCellValue(rowLeaf, columnLeaf) {
@@ -199,6 +216,19 @@ class Visual {
         // Sort header rows by level
         headerRows.sort((a, b) => a.level - b.level);
         return headerRows;
+    }
+    calculateTotals(rowLeaves, columnLeaves) {
+        let columnTotals = new Array(columnLeaves.length).fill(0);
+        let grandTotal = 0;
+        rowLeaves.forEach((rowLeaf, rowIndex) => {
+            columnLeaves.forEach((columnLeaf, columnIndex) => {
+                let cellValue = this.getCellValue(rowLeaf, columnLeaf);
+                let numericValue = parseFloat(cellValue) || 0;
+                columnTotals[columnIndex] += numericValue;
+                grandTotal += numericValue;
+            });
+        });
+        return { columnTotals, grandTotal };
     }
 }
 

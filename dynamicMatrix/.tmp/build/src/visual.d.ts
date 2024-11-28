@@ -14,4 +14,5 @@ export declare class Visual implements IVisual {
     private getCellValue;
     private getLeafNodes;
     private buildColumnHeaders;
+    private calculateTotals;
 }
