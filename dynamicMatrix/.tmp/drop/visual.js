@@ -3,7 +3,7 @@ var dynamicMatrixFDD1BDC1563544A6A39751B0CF710976_DEBUG;
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 889:
+/***/ 6889:
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -19,7 +19,7 @@ exports.locales = {"en-US":["en-US","default",{"englishName":"English (United St
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   b: () => (/* binding */ Visual)
 /* harmony export */ });
-/* harmony import */ var powerbi_visuals_utils_formattingutils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(847);
+/* harmony import */ var powerbi_visuals_utils_formattingutils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1847);
 /* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(756);
 /*
 *  Power BI Visual CLI
@@ -205,7 +205,7 @@ class Visual {
 
 /***/ }),
 
-/***/ 916:
+/***/ 4916:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -217,7 +217,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   isImageUrlColumn: () => (/* binding */ isImageUrlColumn),
 /* harmony export */   isWebUrlColumn: () => (/* binding */ isWebUrlColumn)
 /* harmony export */ });
-/* harmony import */ var _dataRoleHelper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(806);
+/* harmony import */ var _dataRoleHelper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4806);
 // powerbi.extensibility.utils.dataview
 
 function categoryIsAlsoSeriesRole(dataView, seriesRoleName, categoryRoleName) {
@@ -258,7 +258,7 @@ function hasImageUrlColumn(dataView) {
 
 /***/ }),
 
-/***/ 806:
+/***/ 4806:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -316,7 +316,7 @@ function hasRoleInValueColumn(valueColumn, name) {
 
 /***/ }),
 
-/***/ 888:
+/***/ 1888:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -346,7 +346,7 @@ function getFillColorByPropertyName(object, propertyName, defaultColor) {
 
 /***/ }),
 
-/***/ 271:
+/***/ 6271:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -356,7 +356,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getObject: () => (/* binding */ getObject),
 /* harmony export */   getValue: () => (/* binding */ getValue)
 /* harmony export */ });
-/* harmony import */ var _dataViewObject__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(888);
+/* harmony import */ var _dataViewObject__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1888);
 
 /** Gets the value of the given object/property pair. */
 function getValue(objects, propertyId, defaultValue) {
@@ -396,14 +396,14 @@ function getCommonValue(objects, propertyId, defaultValue) {
 
 /***/ }),
 
-/***/ 116:
+/***/ 3116:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   DataViewObjectsParser: () => (/* binding */ DataViewObjectsParser)
 /* harmony export */ });
-/* harmony import */ var _dataViewObjects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(271);
+/* harmony import */ var _dataViewObjects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6271);
 
 class DataViewObjectsParser {
     static getDefault() {
@@ -473,7 +473,7 @@ DataViewObjectsParser.InnumerablePropertyPrefix = /^_/;
 
 /***/ }),
 
-/***/ 247:
+/***/ 1247:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -531,7 +531,7 @@ function groupValues(values) {
 
 /***/ }),
 
-/***/ 270:
+/***/ 889:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -595,13 +595,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   dataViewTransform: () => (/* reexport module object */ _dataViewTransform__WEBPACK_IMPORTED_MODULE_5__),
 /* harmony export */   dataViewWildcard: () => (/* reexport module object */ _dataViewWildcard__WEBPACK_IMPORTED_MODULE_6__)
 /* harmony export */ });
-/* harmony import */ var _converterHelper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(916);
-/* harmony import */ var _dataRoleHelper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(806);
-/* harmony import */ var _dataViewObject__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(888);
-/* harmony import */ var _dataViewObjects__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(271);
-/* harmony import */ var _dataViewObjectsParser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(116);
-/* harmony import */ var _dataViewTransform__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(247);
-/* harmony import */ var _dataViewWildcard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(270);
+/* harmony import */ var _converterHelper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4916);
+/* harmony import */ var _dataRoleHelper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4806);
+/* harmony import */ var _dataViewObject__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1888);
+/* harmony import */ var _dataViewObjects__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6271);
+/* harmony import */ var _dataViewObjectsParser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3116);
+/* harmony import */ var _dataViewTransform__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1247);
+/* harmony import */ var _dataViewWildcard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(889);
 
 
 
@@ -631,7 +631,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
  * This file was generated by the Globalize Culture Generator
  * Translation: bugs found in this file need to be fixed in the generator
  */
-var powerbiGlobalizeLocales_1 = __webpack_require__(889);
+var powerbiGlobalizeLocales_1 = __webpack_require__(6889);
 function injectCultures(Globalize) {
     Object.keys(powerbiGlobalizeLocales_1.locales).forEach(function (locale) { return Globalize.addCultureInfo.apply(Globalize, powerbiGlobalizeLocales_1.locales[locale]); });
 }
@@ -640,7 +640,7 @@ exports["default"] = injectCultures;
 
 /***/ }),
 
-/***/ 717:
+/***/ 7717:
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1972,7 +1972,7 @@ exports.Globalize.culture = function (cultureSelector) {
 
 /***/ }),
 
-/***/ 630:
+/***/ 7630:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -2003,13 +2003,13 @@ exports.Globalize.culture = function (cultureSelector) {
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DateTimeSequence = void 0;
-var dateUtils = __webpack_require__(925);
+var dateUtils = __webpack_require__(7925);
 // powerbi.extensibility.utils.type
-var powerbi_visuals_utils_typeutils_1 = __webpack_require__(87);
+var powerbi_visuals_utils_typeutils_1 = __webpack_require__(2087);
 var NumericSequence = powerbi_visuals_utils_typeutils_1.numericSequence.NumericSequence;
 var NumericSequenceRange = powerbi_visuals_utils_typeutils_1.numericSequenceRange.NumericSequenceRange;
 // powerbi.extensibility.utils.formatting
-var iFormattingService_1 = __webpack_require__(351);
+var iFormattingService_1 = __webpack_require__(3351);
 // Repreasents the sequence of the dates/times
 var DateTimeSequence = /** @class */ (function () {
     // Constructors
@@ -2299,7 +2299,7 @@ exports.DateTimeSequence = DateTimeSequence;
 
 /***/ }),
 
-/***/ 925:
+/***/ 7925:
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -2453,7 +2453,7 @@ exports.addMilliseconds = addMilliseconds;
 
 /***/ }),
 
-/***/ 224:
+/***/ 3224:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2500,8 +2500,8 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DataLabelsDisplayUnitSystem = exports.WholeUnitsDisplayUnitSystem = exports.DefaultDisplayUnitSystem = exports.NoDisplayUnitSystem = exports.DisplayUnitSystem = exports.DisplayUnit = void 0;
 /* eslint-disable no-useless-escape */
-var formattingService_1 = __webpack_require__(100);
-var powerbi_visuals_utils_typeutils_1 = __webpack_require__(87);
+var formattingService_1 = __webpack_require__(3100);
+var powerbi_visuals_utils_typeutils_1 = __webpack_require__(2087);
 // Constants
 var maxExponent = 24;
 var defaultScientificBigNumbersBoundary = 1E15;
@@ -2830,7 +2830,7 @@ function addUnitIfNonEmpty(units, value, title, labelFormat, adjustMinBasedOnPre
 
 /***/ }),
 
-/***/ 520:
+/***/ 1520:
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -2880,7 +2880,7 @@ var DisplayUnitSystemType;
 
 /***/ }),
 
-/***/ 801:
+/***/ 3801:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -2911,7 +2911,7 @@ var DisplayUnitSystemType;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Family = exports.fallbackFonts = void 0;
-var familyInfo_1 = __webpack_require__(721);
+var familyInfo_1 = __webpack_require__(6721);
 exports.fallbackFonts = ["helvetica", "arial", "sans-serif"];
 exports.Family = {
     light: new familyInfo_1.FamilyInfo(exports.fallbackFonts),
@@ -2927,7 +2927,7 @@ exports.Family = {
 
 /***/ }),
 
-/***/ 721:
+/***/ 6721:
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -3014,7 +3014,7 @@ exports.FamilyInfo = FamilyInfo;
 
 /***/ }),
 
-/***/ 932:
+/***/ 4932:
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -3139,7 +3139,7 @@ exports.fixDateTimeFormat = fixDateTimeFormat;
 
 /***/ }),
 
-/***/ 394:
+/***/ 6394:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -3170,10 +3170,10 @@ exports.fixDateTimeFormat = fixDateTimeFormat;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.format = exports.canFormat = void 0;
-var formatting_1 = __webpack_require__(932);
-var formattingEncoder = __webpack_require__(459);
-var stringExtensions = __webpack_require__(248);
-var globalize_1 = __webpack_require__(717);
+var formatting_1 = __webpack_require__(4932);
+var formattingEncoder = __webpack_require__(6459);
+var stringExtensions = __webpack_require__(1248);
+var globalize_1 = __webpack_require__(7717);
 var _currentCachedFormat;
 var _currentCachedProcessedFormat;
 // Evaluates if the value can be formatted using the NumberFormat
@@ -3290,7 +3290,7 @@ function ensurePatterns(calendar) {
 
 /***/ }),
 
-/***/ 459:
+/***/ 6459:
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -3384,7 +3384,7 @@ exports.restoreLiterals = restoreLiterals;
 
 /***/ }),
 
-/***/ 100:
+/***/ 3100:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -3416,16 +3416,16 @@ exports.restoreLiterals = restoreLiterals;
 /* eslint-disable no-useless-escape */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.formattingEncoder = exports.dateTimeFormat = exports.numberFormat = exports.formattingService = exports.FormattingService = void 0;
-var globalize_1 = __webpack_require__(717);
+var globalize_1 = __webpack_require__(7717);
 var globalize_cultures_1 = __webpack_require__(980);
 (0, globalize_cultures_1.default)(globalize_1.Globalize);
-var dateTimeFormat = __webpack_require__(394);
+var dateTimeFormat = __webpack_require__(6394);
 exports.dateTimeFormat = dateTimeFormat;
-var numberFormat = __webpack_require__(534);
+var numberFormat = __webpack_require__(7534);
 exports.numberFormat = numberFormat;
-var formattingEncoder = __webpack_require__(459);
+var formattingEncoder = __webpack_require__(6459);
 exports.formattingEncoder = formattingEncoder;
-var iFormattingService_1 = __webpack_require__(351);
+var iFormattingService_1 = __webpack_require__(3351);
 var IndexedTokensRegex = /({{)|(}})|{(\d+[^}]*)}/g;
 // Formatting Service
 var FormattingService = /** @class */ (function () {
@@ -3614,7 +3614,7 @@ exports.formattingService = formattingService;
 
 /***/ }),
 
-/***/ 351:
+/***/ 3351:
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -3661,7 +3661,7 @@ var DateTimeUnit;
 
 /***/ }),
 
-/***/ 534:
+/***/ 7534:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -3698,13 +3698,13 @@ exports.getCustomFormatMetadata = exports.formatWithCustomOverride = exports.for
  * formatting expressions for numeric types including custom formats.
  */
 /* eslint-disable no-useless-escape */
-var globalize_1 = __webpack_require__(717);
+var globalize_1 = __webpack_require__(7717);
 // powerbi.extensibility.utils.type
-var powerbi_visuals_utils_typeutils_1 = __webpack_require__(87);
+var powerbi_visuals_utils_typeutils_1 = __webpack_require__(2087);
 // powerbi.extensibility.utils.formatting
-var stringExtensions = __webpack_require__(248);
-var formattingEncoder = __webpack_require__(459);
-var formattingService_1 = __webpack_require__(100);
+var stringExtensions = __webpack_require__(1248);
+var formattingEncoder = __webpack_require__(6459);
+var formattingService_1 = __webpack_require__(3100);
 var NumericalPlaceHolderRegex = /\{.+\}/;
 var ScientificFormatRegex = /e[+-]*[0#]+/i;
 var StandardFormatRegex = /^[a-z]\d{0,2}$/i; // a letter + up to 2 digits for precision specifier
@@ -4410,46 +4410,46 @@ function localize(value, dictionary) {
 
 /***/ }),
 
-/***/ 847:
+/***/ 1847:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = exports.G2 = __webpack_unused_export__ = __webpack_unused_export__ = void 0;
-var formatting = __webpack_require__(932);
+var formatting = __webpack_require__(4932);
 __webpack_unused_export__ = formatting;
-var valueFormatter = __webpack_require__(62);
+var valueFormatter = __webpack_require__(5062);
 exports.G2 = valueFormatter;
-var stringExtensions = __webpack_require__(248);
+var stringExtensions = __webpack_require__(1248);
 __webpack_unused_export__ = stringExtensions;
-var textMeasurementService = __webpack_require__(391);
+var textMeasurementService = __webpack_require__(2391);
 __webpack_unused_export__ = textMeasurementService;
-var interfaces = __webpack_require__(107);
+var interfaces = __webpack_require__(1107);
 __webpack_unused_export__ = interfaces;
-var font = __webpack_require__(801);
+var font = __webpack_require__(3801);
 __webpack_unused_export__ = font;
-var familyInfo = __webpack_require__(721);
+var familyInfo = __webpack_require__(6721);
 __webpack_unused_export__ = familyInfo;
 var textUtil = __webpack_require__(604);
 __webpack_unused_export__ = textUtil;
-var dateUtils = __webpack_require__(925);
+var dateUtils = __webpack_require__(7925);
 __webpack_unused_export__ = dateUtils;
-var dateTimeSequence = __webpack_require__(630);
+var dateTimeSequence = __webpack_require__(7630);
 __webpack_unused_export__ = dateTimeSequence;
-var displayUnitSystem = __webpack_require__(224);
+var displayUnitSystem = __webpack_require__(3224);
 __webpack_unused_export__ = displayUnitSystem;
-var displayUnitSystemType = __webpack_require__(520);
+var displayUnitSystemType = __webpack_require__(1520);
 __webpack_unused_export__ = displayUnitSystemType;
-var formattingService = __webpack_require__(100);
+var formattingService = __webpack_require__(3100);
 __webpack_unused_export__ = formattingService;
-var wordBreaker = __webpack_require__(188);
+var wordBreaker = __webpack_require__(5807);
 __webpack_unused_export__ = wordBreaker;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 107:
+/***/ 1107:
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -4520,7 +4520,7 @@ exports.ephemeralStorageService = new EphemeralStorageService();
 
 /***/ }),
 
-/***/ 248:
+/***/ 1248:
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -4807,7 +4807,7 @@ exports.stripTagDelimiters = stripTagDelimiters;
 
 /***/ }),
 
-/***/ 391:
+/***/ 2391:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -4839,9 +4839,9 @@ exports.stripTagDelimiters = stripTagDelimiters;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.wordBreakOverflowingText = exports.wordBreak = exports.svgEllipsis = exports.getTailoredTextOrDefault = exports.getDivElementWidth = exports.getSvgMeasurementProperties = exports.getMeasurementProperties = exports.measureSvgTextElementWidth = exports.estimateSvgTextHeight = exports.estimateSvgTextBaselineDelta = exports.measureSvgTextHeight = exports.measureSvgTextRect = exports.measureSvgTextWidth = exports.removeSpanElement = void 0;
 // powerbi.extensibility.utils.type
-var powerbi_visuals_utils_typeutils_1 = __webpack_require__(87);
+var powerbi_visuals_utils_typeutils_1 = __webpack_require__(2087);
 // powerbi.extensibility.utils.formatting
-var wordBreaker = __webpack_require__(188);
+var wordBreaker = __webpack_require__(5807);
 var ephemeralStorageService_1 = __webpack_require__(167);
 var ellipsis = "...";
 var spanElement;
@@ -5254,7 +5254,7 @@ exports.replaceSpaceWithNBSP = replaceSpaceWithNBSP;
 
 /***/ }),
 
-/***/ 62:
+/***/ 5062:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -5285,12 +5285,12 @@ exports.replaceSpaceWithNBSP = replaceSpaceWithNBSP;
 */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.calculateExactDigitsPrecision = exports.getDisplayUnits = exports.formatListOr = exports.formatListAnd = exports.getFormatStringByColumn = exports.getFormatString = exports.createDisplayUnitSystem = exports.formatVariantMeasureValue = exports.format = exports.create = exports.checkValueInBounds = exports.createDefaultFormatter = exports.setLocaleOptions = exports.getFormatMetadata = exports.getLocalizedString = exports.DefaultDateFormat = exports.DefaultNumericFormat = exports.DefaultIntegerFormat = void 0;
-var displayUnitSystem_1 = __webpack_require__(224);
-var displayUnitSystemType_1 = __webpack_require__(520);
-var stringExtensions = __webpack_require__(248);
-var formattingService_1 = __webpack_require__(100);
-var dateTimeSequence_1 = __webpack_require__(630);
-var powerbi_visuals_utils_typeutils_1 = __webpack_require__(87);
+var displayUnitSystem_1 = __webpack_require__(3224);
+var displayUnitSystemType_1 = __webpack_require__(1520);
+var stringExtensions = __webpack_require__(1248);
+var formattingService_1 = __webpack_require__(3100);
+var dateTimeSequence_1 = __webpack_require__(7630);
+var powerbi_visuals_utils_typeutils_1 = __webpack_require__(2087);
 var powerbi_visuals_utils_dataviewutils_1 = __webpack_require__(724);
 // powerbi.extensibility.utils.type
 var ValueType = powerbi_visuals_utils_typeutils_1.valueType.ValueType;
@@ -5770,7 +5770,7 @@ exports.calculateExactDigitsPrecision = calculateExactDigitsPrecision;
 
 /***/ }),
 
-/***/ 188:
+/***/ 5807:
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -5916,7 +5916,7 @@ exports.splitByWidth = splitByWidth;
 
 /***/ }),
 
-/***/ 442:
+/***/ 5442:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -6445,7 +6445,7 @@ function detectPrecision(precision, x, y) {
 
 /***/ }),
 
-/***/ 341:
+/***/ 4341:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -6765,7 +6765,7 @@ function ensureArray(value) {
 
 /***/ }),
 
-/***/ 879:
+/***/ 2879:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -6776,7 +6776,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   setFlag: () => (/* binding */ setFlag),
 /* harmony export */   toString: () => (/* binding */ toString)
 /* harmony export */ });
-/* harmony import */ var _double__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(442);
+/* harmony import */ var _double__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5442);
 /*
  *  Power BI Visualizations
  *
@@ -6851,7 +6851,7 @@ function getBitCount(value) {
 
 /***/ }),
 
-/***/ 298:
+/***/ 4298:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -6891,7 +6891,7 @@ function XOR(a, b) {
 
 /***/ }),
 
-/***/ 51:
+/***/ 3051:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -6986,7 +6986,7 @@ function endsWith(str, suffix) {
 
 /***/ }),
 
-/***/ 87:
+/***/ 2087:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -7005,19 +7005,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   textSizeDefaults: () => (/* reexport module object */ _textSizeDefaults__WEBPACK_IMPORTED_MODULE_11__),
 /* harmony export */   valueType: () => (/* reexport module object */ _valueType__WEBPACK_IMPORTED_MODULE_12__)
 /* harmony export */ });
-/* harmony import */ var _extensions_arrayExtensions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(341);
-/* harmony import */ var _extensions_enumExtensions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(879);
-/* harmony import */ var _extensions_logicExtensions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(298);
-/* harmony import */ var _extensions_regExpExtensions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(51);
+/* harmony import */ var _extensions_arrayExtensions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4341);
+/* harmony import */ var _extensions_enumExtensions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2879);
+/* harmony import */ var _extensions_logicExtensions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4298);
+/* harmony import */ var _extensions_regExpExtensions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3051);
 /* harmony import */ var _extensions_stringExtensions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(539);
 /* harmony import */ var _numericSequence_numericSequence__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(372);
 /* harmony import */ var _numericSequence_numericSequenceRange__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(67);
-/* harmony import */ var _double__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(442);
-/* harmony import */ var _jsonComparer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(38);
-/* harmony import */ var _pixelConverter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(79);
+/* harmony import */ var _double__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(5442);
+/* harmony import */ var _jsonComparer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(5038);
+/* harmony import */ var _pixelConverter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(5079);
 /* harmony import */ var _prototype__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(421);
-/* harmony import */ var _textSizeDefaults__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(939);
-/* harmony import */ var _valueType__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(182);
+/* harmony import */ var _textSizeDefaults__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(5939);
+/* harmony import */ var _valueType__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(4182);
 
 
 
@@ -7036,7 +7036,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 38:
+/***/ 5038:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -7088,7 +7088,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   NumericSequence: () => (/* binding */ NumericSequence)
 /* harmony export */ });
-/* harmony import */ var _double__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(442);
+/* harmony import */ var _double__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5442);
 /* harmony import */ var _numericSequenceRange__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67);
 /*
  *  Power BI Visualizations
@@ -7298,7 +7298,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   NumericSequenceRange: () => (/* binding */ NumericSequenceRange),
 /* harmony export */   hasValue: () => (/* binding */ hasValue)
 /* harmony export */ });
-/* harmony import */ var _double__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(442);
+/* harmony import */ var _double__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5442);
 /*
  *  Power BI Visualizations
  *
@@ -7460,7 +7460,7 @@ function hasValue(value) {
 
 /***/ }),
 
-/***/ 79:
+/***/ 5079:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -7609,7 +7609,7 @@ function overrideArray(prototype, override) {
 
 /***/ }),
 
-/***/ 939:
+/***/ 5939:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -7670,7 +7670,7 @@ function getScale(textSize) {
 
 /***/ }),
 
-/***/ 182:
+/***/ 4182:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -7684,8 +7684,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TemporalType: () => (/* binding */ TemporalType),
 /* harmony export */   ValueType: () => (/* binding */ ValueType)
 /* harmony export */ });
-/* harmony import */ var _extensions_enumExtensions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(879);
-/* harmony import */ var _jsonComparer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(38);
+/* harmony import */ var _extensions_enumExtensions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2879);
+/* harmony import */ var _jsonComparer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5038);
 /*
  *  Power BI Visualizations
  *
@@ -9586,7 +9586,7 @@ function basis(t1, v0, v1, v2, v3) {
 /* harmony export */   uN: () => (/* binding */ gamma)
 /* harmony export */ });
 /* unused harmony export hue */
-/* harmony import */ var _constant_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3116);
+/* harmony import */ var _constant_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(735);
 
 
 function linear(a, d) {
@@ -9620,7 +9620,7 @@ function nogamma(a, b) {
 
 /***/ }),
 
-/***/ 3116:
+/***/ 735:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -10328,7 +10328,7 @@ function selection_cloneDeep() {
 /* harmony export */   A: () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1882);
-/* harmony import */ var _enter_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4916);
+/* harmony import */ var _enter_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2535);
 /* harmony import */ var _constant_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9731);
 
 
@@ -10555,7 +10555,7 @@ function dispatchFunction(type, params) {
 
 /***/ }),
 
-/***/ 4916:
+/***/ 2535:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -10685,7 +10685,7 @@ function htmlFunction(value) {
 /* harmony import */ var _selectChildren_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7867);
 /* harmony import */ var _filter_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9734);
 /* harmony import */ var _data_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(8664);
-/* harmony import */ var _enter_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(4916);
+/* harmony import */ var _enter_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(2535);
 /* harmony import */ var _exit_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2672);
 /* harmony import */ var _join_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(5232);
 /* harmony import */ var _merge_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(7610);
