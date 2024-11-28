@@ -147,7 +147,7 @@ export class Visual implements IVisual {
         totalsRow.append('td')
             .attr('colspan', matrix.rows.levels.length)
             .classed('totalsLabel', true)
-            .text('Totals');
+            .text('Total');
     
         columnTotals.forEach(total => {
             totalsRow.append('td')

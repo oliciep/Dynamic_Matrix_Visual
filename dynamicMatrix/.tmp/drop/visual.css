@@ -8,14 +8,14 @@
   padding: 5px;
   text-align: left;
 }
-.matrixTable th {
-  background-color: #D70F0A;
-}
-.matrixTable .rowHeader {
-  font-weight: bold;
-}
 .matrixTable .dataCell {
   text-align: right;
+}
+.matrixTable .totalsLabel {
+  font-weight: bold;
+}
+.matrixTable .columnTotal {
+  font-weight: bold;
 }
 
 
